@@ -1,0 +1,6 @@
+{
+  "name": "Pijakbumi Learning",
+  "description": "Platform edukasi lingkungan dari Pijakbumi dengan modul belajar, kuis, dan forum diskusi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
