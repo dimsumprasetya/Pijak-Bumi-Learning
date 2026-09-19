@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/navbar';
-import { Instagram, Youtube, MessageCircle, Sprout } from 'lucide-react';
+import { Instagram, Youtube, MessageCircle } from 'lucide-react';
 import './globals.css';
 
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'] });
@@ -39,14 +40,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
             <div className="grid md:grid-cols-3 gap-10">
               <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="bg-[#304110] p-2 rounded-lg">
-                    <Sprout className="h-4 w-4 text-white" />
-                  </div>
-                  <span className="font-bold text-lg text-[#2c3e2e]">
-                    Pijak Bumi <span className="text-[#65826c]">Learning</span>
-                  </span>
-                </div>
+                <Link href="/" className="inline-block mb-4" aria-label="Pijak Bumi Learning">
+                  <Image
+                    src="/images/logo-pijak-bumi.png"
+                    alt="Pijak Bumi Learning"
+                    width={257}
+                    height={269}
+                    className="h-20 w-auto"
+                  />
+                </Link>
                 <p className="text-sm text-[#5a6b5c] leading-relaxed">
                   Learning platform untuk membantu orang membangun keterampilan dan kebiasaan hidup
                   yang lebih berkelanjutan.

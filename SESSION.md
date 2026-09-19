@@ -73,6 +73,24 @@ Catatan: foto `founder.jpg` sengaja dipilih yang **tanpa wajah** (tangan + tanah
 supaya tidak terkesan memakai wajah orang sebagai Dewi. Ganti dengan foto asli Dewi
 kalau sudah ada.
 
+## Logo
+Logo resmi dipasang di navbar + footer (+ favicon). Sumber: `Desktop/LOGO PIJAK BUMI.png`
+(500x500 PNG, latar cream solid, bukan transparan).
+
+Cara memasang ulang kalau logo diganti:
+- Latar dihilangkan jadi transparan (keying warna + un-premultiply) → `public/images/logo-pijak-bumi.png`
+- Versi terang untuk latar gelap → `public/images/logo-pijak-bumi-terang.png`
+  (warna #e8eed9, dipakai bila nanti perlu logo di section hijau tua)
+- Favicon → `app/icon.png` (Next.js app router otomatis). Favicon SENGAJA
+  memakai latar cream asli supaya terbaca di tab browser terang maupun gelap.
+
+**PENTING soal ukuran logo:** logo ini bertumpuk (stacked). Kata "pijak bumi."
+mengisi ~91% tinggi, kata "learning" hanya ~9% (23px dari 269px). Akibatnya
+"learning" baru terbaca jelas di tinggi render **80px**; di bawah itu jadi cetakan
+halus. Karena itu: navbar pakai h-12 (48px, "pijak bumi." tajam), footer pakai
+h-20 (80px, seluruh logo terbaca). Kalau nanti mau "learning" terbaca di navbar,
+perlu varian logo horizontal — jangan potong/mengubah logo tanpa izin user.
+
 ## TODO / belum
 - Angka social proof masih placeholder (500+, 10+, 2023) — perlu data aktual
 - Testimonial masih contoh, belum testimonial asli

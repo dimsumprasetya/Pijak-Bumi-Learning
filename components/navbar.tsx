@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Sprout, GraduationCap, BookOpen, Wrench, MessageCircle, Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import { GraduationCap, BookOpen, Wrench, MessageCircle, Menu, X } from 'lucide-react';
 
 const NAV = [
   { href: '/kelas', icon: GraduationCap, text: 'Kelas' },
@@ -19,13 +20,19 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="bg-[#304110] p-2 rounded-lg group-hover:bg-[#222e0b] transition-colors">
-                <Sprout className="h-5 w-5 text-white" />
-              </div>
-              <span className="font-bold text-lg sm:text-xl tracking-tight text-[#2c3e2e]">
-                Pijak Bumi <span className="text-[#65826c]">Learning</span>
-              </span>
+            <Link
+              href="/"
+              className="flex items-center group"
+              aria-label="Pijak Bumi Learning — kembali ke beranda"
+            >
+              <Image
+                src="/images/logo-pijak-bumi.png"
+                alt="Pijak Bumi Learning"
+                width={257}
+                height={269}
+                priority
+                className="h-12 w-auto"
+              />
             </Link>
           </div>
 
