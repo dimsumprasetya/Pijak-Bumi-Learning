@@ -1,0 +1,122 @@
+{
+  "source": "https://lynk.id/pijakbumiid",
+  "fetchedAt": "2026-09-19T07:33:39.211Z",
+  "profile": {
+    "username": "@pijakbumiid",
+    "description": "Teman Belajar Hidup Sehat & Ramah Lingkungan 🌏🌻 🍀 Online | Onsite",
+    "avatar": "https://cdn.lynkid.my.id/profile/27-06-2024/1719452948675_6518464?width=180&quality=90"
+  },
+  "products": [
+    {
+      "id": "x4vx4ompqj41",
+      "title": "💧 WEB APP AUDIT PEMAKAIAN AIR",
+      "price": "Free",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/products/26-08-2026/1787739362974_3901152.webp",
+      "url": "https://lynk.id/pijakbumiid/x4vx4ompqj41"
+    },
+    {
+      "id": "je6dejdvr4gp",
+      "title": "7 VIDEO BELAJAR KESIAGAAN AIR SAAT SURVIVAL",
+      "price": "IDR 39,000",
+      "originalPrice": "IDR 50,000",
+      "image": "https://cdn.lynkid.my.id/products/26-08-2026/1787740991143_8966740.webp",
+      "url": "https://lynk.id/pijakbumiid/je6dejdvr4gp"
+    },
+    {
+      "id": "1el2r46d6y2r",
+      "title": "Resep Herbal Untuk Masalah Rambut",
+      "price": "IDR 15,000",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/products/07-08-2025/1754537563983_1624905.webp",
+      "url": "https://lynk.id/pijakbumiid/1el2r46d6y2r"
+    },
+    {
+      "id": "GG0DOD6",
+      "title": "😉 Yuk Racik Body Butter dari Rumah.",
+      "price": "Free",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/products/27-06-2024/1719463727921_2125317",
+      "url": "https://lynk.id/pijakbumiid/GG0DOD6"
+    },
+    {
+      "id": "MLGQAxr",
+      "title": "Natural Hair Care Class",
+      "price": "IDR 299,000",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/products/03-04-2025/1743675051211_5162217",
+      "url": "https://lynk.id/pijakbumiid/MLGQAxr"
+    },
+    {
+      "id": "OYmjeDy",
+      "title": "Homemade Natural Shampoo 🌿✨",
+      "price": "IDR 199,999",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/products/03-09-2024/1725338687653_2256710",
+      "url": "https://lynk.id/pijakbumiid/OYmjeDy"
+    },
+    {
+      "id": "G69zmqe",
+      "title": "🎁 Gratis Unduh! Poster Zero Waste",
+      "price": "Free",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/products/04-07-2024/1720085911900_1545022?width=150&quality=90",
+      "url": "https://lynk.id/pijakbumiid/G69zmqe"
+    },
+    {
+      "id": "nygm9pygrygd",
+      "title": "Memulai Journey to Zero",
+      "price": "Free",
+      "originalPrice": null,
+      "image": "https://cdn.lynkid.my.id/draft-products/27-02-2026/1772159089004_5655967.webp?width=150&quality=90",
+      "url": "https://lynk.id/pijakbumiid/c/nygm9pygrygd"
+    }
+  ],
+  "programs": [
+    {
+      "id": "2ogzyzdxzee9",
+      "title": "Belajar Melalui Keseharian",
+      "description": "Program aksi untuk menjadikan keseharian rumah sebagai ruang belajar berkualitas.",
+      "price": "IDR 149,000",
+      "image": "https://cdn.lynkid.my.id/products/24-08-2026/1787561217025_9598901.webp?width=210&quality=90",
+      "url": "https://lynk.id/pijakbumiid/2ogzyzdxzee9",
+      "cta": "Daftar Sekarang"
+    },
+    {
+      "id": "pvdxnk1m02zo",
+      "title": "Travelling Sebagai Cara Belajar",
+      "description": "Program aksi untuk mengubah perjalanan kecil menjadi pengalaman belajar anak.",
+      "price": "IDR 149,000",
+      "image": "https://cdn.lynkid.my.id/products/24-08-2026/1787566034931_2337028.webp?width=210&quality=90",
+      "url": "https://lynk.id/pijakbumiid/pvdxnk1m02zo",
+      "cta": "Daftar Sekarang"
+    },
+    {
+      "id": "lgzvekz9gg5d",
+      "title": "Premium Printable",
+      "description": "Ratusan materi belajar siap pakai, membantu Anda menghadirkan kegiatan belajar tanpa ribet.",
+      "price": "IDR 350,000",
+      "image": "https://cdn.lynkid.my.id/products/16-07-2026/1784198159033_1308089.webp?width=210&quality=90",
+      "url": "https://lynk.id/pijakbumiid/lgzvekz9gg5d",
+      "cta": "Daftar Sekarang"
+    },
+    {
+      "id": "4zrn146ggox6",
+      "title": "Platinum Member",
+      "description": "Kelas pertumbuhan orang tua setahun penuh, pendampingan mentor, dan materi siap pakai untuk anak.",
+      "price": "IDR 1,500,000",
+      "image": "https://cdn.lynkid.my.id/products/31-07-2026/1785490365559_5881629.webp?width=210&quality=90",
+      "url": "https://lynk.id/pijakbumiid/4zrn146ggox6",
+      "cta": "Pelajari Lebih Lanjut"
+    },
+    {
+      "id": "rjd5z4n1q7d8",
+      "title": "Parent Growth Program",
+      "description": "Setahun penuh program aksi bulanan, menguatkan langkah Anda mendidik anak dengan percaya diri.",
+      "price": "IDR 1,000,000",
+      "image": "https://cdn.lynkid.my.id/draft-products/16-07-2026/1784195071446_2559116.webp?width=210&quality=90",
+      "url": "https://lynk.id/pijakbumiid/rjd5z4n1q7d8",
+      "cta": "Daftar Sekarang"
+    }
+  ]
+}
