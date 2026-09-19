@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, BookOpen, FileText } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import { PANDUAN, KATEGORI } from '@/lib/konten';
 
 export const metadata = {
@@ -37,27 +38,35 @@ export default function PanduanPage() {
             <Link
               key={p.id}
               href={`/panduan/${p.id}`}
-              className="bg-white border border-[#e1ded8] rounded-2xl p-6 hover:border-[#304110] hover:shadow-md transition-all group flex flex-col"
+              className="bg-white border border-[#e1ded8] rounded-2xl overflow-hidden hover:border-[#304110] hover:shadow-md transition-all group flex flex-col"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-[#e8eed9] flex items-center justify-center group-hover:bg-[#304110] transition-colors">
-                  <FileText className="w-6 h-6 text-[#304110] group-hover:text-white transition-colors" />
-                </div>
-                <span className="text-xs font-medium text-[#5a6b5c]">{p.halaman}</span>
+              <div className="relative h-44 w-full bg-[#e8eed9]">
+                <Image
+                  src={p.gambar}
+                  alt={p.gambarAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 360px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-3 right-3 text-xs font-medium bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-[#5a6b5c]">
+                  {p.halaman}
+                </span>
               </div>
 
-              {kategori && (
-                <span className="text-xs font-semibold text-[#65826c] mb-2">
-                  {kategori.emoji} {kategori.nama}
-                </span>
-              )}
+              <div className="p-6 flex flex-col flex-grow">
+                {kategori && (
+                  <span className="text-xs font-semibold text-[#65826c] mb-2">
+                    {kategori.emoji} {kategori.nama}
+                  </span>
+                )}
 
-              <h2 className="text-lg font-bold text-[#1a261c] mb-2">{p.judul}</h2>
-              <p className="text-[#5a6b5c] text-sm leading-relaxed flex-grow">{p.ringkas}</p>
+                <h2 className="text-lg font-bold text-[#1a261c] mb-2">{p.judul}</h2>
+                <p className="text-[#5a6b5c] text-sm leading-relaxed flex-grow">{p.ringkas}</p>
 
-              <div className="mt-6 pt-4 border-t border-[#f1efe9] font-semibold text-[#304110] text-sm flex items-center justify-between">
-                Lihat Panduan
-                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                <div className="mt-6 pt-4 border-t border-[#f1efe9] font-semibold text-[#304110] text-sm flex items-center justify-between">
+                  Lihat Panduan
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </Link>
           );

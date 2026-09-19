@@ -1,17 +1,11 @@
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Wrench, ClipboardList, BookMarked, LayoutTemplate } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, ArrowRight, Wrench } from 'lucide-react';
 import { RESOURCES, KATEGORI } from '@/lib/konten';
 
 export const metadata = {
   title: 'Tool & Resource — Pijak Bumi Learning',
   description: 'Worksheet, jurnal, checklist, dan template untuk membantu kebiasaan barumu berjalan.',
-};
-
-const ikonTipe: Record<string, typeof Wrench> = {
-  Jurnal: BookMarked,
-  Checklist: ClipboardList,
-  Worksheet: ClipboardList,
-  Template: LayoutTemplate,
 };
 
 export default function ResourcesPage() {
@@ -38,34 +32,39 @@ export default function ResourcesPage() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {RESOURCES.map((r) => {
-          const Ikon = ikonTipe[r.tipe] ?? Wrench;
           const kategori = KATEGORI.find((k) => k.id === r.kategori);
           return (
             <div
               key={r.id}
-              className="bg-white border border-[#e1ded8] rounded-2xl p-6 hover:border-[#304110] transition-colors flex flex-col"
+              className="bg-white border border-[#e1ded8] rounded-2xl overflow-hidden hover:border-[#304110] hover:shadow-md transition-all group flex flex-col"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-[#e8eed9] flex items-center justify-center">
-                  <Ikon className="w-6 h-6 text-[#304110]" />
-                </div>
-                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#f1efe9] text-[#5a6b5c]">
+              <div className="relative h-44 w-full bg-[#e8eed9]">
+                <Image
+                  src={r.gambar}
+                  alt={r.gambarAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 360px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur text-[#5a6b5c]">
                   {r.tipe}
                 </span>
               </div>
 
-              {kategori && (
-                <span className="text-xs font-semibold text-[#65826c] mb-2">
-                  {kategori.emoji} {kategori.nama}
+              <div className="p-6 flex flex-col flex-grow">
+                {kategori && (
+                  <span className="text-xs font-semibold text-[#65826c] mb-2">
+                    {kategori.emoji} {kategori.nama}
+                  </span>
+                )}
+
+                <h2 className="text-lg font-bold text-[#1a261c] mb-2">{r.judul}</h2>
+                <p className="text-[#5a6b5c] text-sm leading-relaxed flex-grow">{r.ringkas}</p>
+
+                <span className="mt-6 pt-4 border-t border-[#f1efe9] text-sm font-semibold text-[#9ca3af]">
+                  Segera tersedia
                 </span>
-              )}
-
-              <h2 className="text-lg font-bold text-[#1a261c] mb-2">{r.judul}</h2>
-              <p className="text-[#5a6b5c] text-sm leading-relaxed flex-grow">{r.ringkas}</p>
-
-              <span className="mt-6 pt-4 border-t border-[#f1efe9] text-sm font-semibold text-[#9ca3af]">
-                Segera tersedia
-              </span>
+              </div>
             </div>
           );
         })}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, ArrowRight, Clock, GraduationCap, Users } from 'lucide-react';
 import { KELAS, KATEGORI } from '@/lib/konten';
 
@@ -54,8 +55,14 @@ export default function KelasPage() {
             href={`/kelas/${k.id}`}
             className="bg-white border border-[#e1ded8] rounded-2xl overflow-hidden hover:border-[#304110] hover:shadow-md transition-all group flex flex-col"
           >
-            <div className="h-32 bg-gradient-to-br from-[#e8eed9] to-[#c8d6b0] flex items-center justify-center">
-              <GraduationCap className="w-10 h-10 text-[#304110]" />
+            <div className="relative h-44 w-full bg-[#e8eed9]">
+              <Image
+                src={k.gambar}
+                alt={k.gambarAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 360px"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <div className="p-6 flex flex-col flex-grow">
               <div className="flex items-center gap-3 mb-3 flex-wrap">

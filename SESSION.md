@@ -53,6 +53,26 @@ Sumber brief: https://chatgpt.com/share/6aae2f64-0fbc-83ec-bcf4-a3480842d3db
 - Semua route HTTP 200, `/modul` 404
 - Copy brief dicek satu per satu di HTML ter-render — semua ada
 
+## Foto (sesi lanjutan)
+Situs sebelumnya penuh icon; sekarang pakai foto asli. Caranya sama seperti ceritainaja.net:
+unduh foto dari **Pexels API** ke `public/images/`, lalu dipakai lewat `next/image`.
+
+- `scripts/fetch-photos.mjs` — unduh 26 foto. Pakai `PEXELS_API_KEY` dari
+  `~/AppData/Local/hermes/.env`. Bisa pilih sebagian:
+  `node scripts/fetch-photos.mjs res-kebun hero` / `--force` untuk timpa.
+- `scripts/optimize-photos.mjs` — resize maks 1600px + encode JPEG q80.
+  Hasil: 9.9 MB → 4.5 MB. Bisa juga dibatasi per nama.
+- Peta nama file → query Pexels ada di `fetch-photos.mjs` (objek `FOTO`).
+  Kalau ada foto yang tidak cocok, ubah query-nya di situ lalu ambil ulang.
+
+Foto dipakai di: hero, kenapa PBL, 4 kartu kategori, 3 kartu produk, cerita,
+founder, komunitas, CTA, plus header kartu di /kelas, /panduan, /resources, dan
+halaman detailnya. Semua gambar + alt-nya terdaftar di `lib/konten.ts`.
+
+Catatan: foto `founder.jpg` sengaja dipilih yang **tanpa wajah** (tangan + tanah),
+supaya tidak terkesan memakai wajah orang sebagai Dewi. Ganti dengan foto asli Dewi
+kalau sudah ada.
+
 ## TODO / belum
 - Angka social proof masih placeholder (500+, 10+, 2023) — perlu data aktual
 - Testimonial masih contoh, belum testimonial asli

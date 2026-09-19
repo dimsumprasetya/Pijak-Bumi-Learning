@@ -1,13 +1,10 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   Sprout,
   Handshake,
   Heart,
-  Recycle,
-  Leaf,
-  Droplets,
-  Home as HomeIcon,
   GraduationCap,
   BookOpen,
   Wrench,
@@ -16,14 +13,23 @@ import {
   Youtube,
   MessageCircle,
   Footprints,
+  Users,
 } from 'lucide-react';
 import MulaiDariMana from '@/components/mulai-dari-mana';
+import { KATEGORI, FOTO } from '@/lib/konten';
+
+const HREF_KATEGORI: Record<string, string> = {
+  berkelanjutan: '/kelas',
+  alam: '/kelas',
+  kesiapsiagaan: '/kelas',
+  'rumah-tangga': '/resources',
+};
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* ============ 1. HERO ============ */}
-      <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 flex flex-col items-center text-center">
+      <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-16 flex flex-col items-center text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e8eed9] text-[#222e0b] text-sm font-medium mb-8">
           <Sprout className="w-4 h-4" />
           <span>Belajar hidup selaras dengan bumi</span>
@@ -64,23 +70,54 @@ export default function Home() {
           <span className="text-[#b5b1a8]">·</span>
           <span className="px-3 py-1 rounded-full border border-[#e1ded8] bg-white">Komunitas</span>
         </div>
+
+        {/* Foto utama */}
+        <div className="relative w-full mt-14 rounded-3xl overflow-hidden border border-[#e1ded8] aspect-[16/9] md:aspect-[21/9]">
+          <Image
+            src={FOTO.hero}
+            alt={FOTO.heroAlt}
+            fill
+            priority
+            sizes="(max-width: 1152px) 100vw, 1152px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a261c]/45 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 p-6 md:p-8 text-left">
+            <p className="text-white font-semibold text-lg md:text-xl drop-shadow">
+              Mulai dari hal kecil, dari rumah, dari diri kita sendiri.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* ============ 2. KENAPA PBL ============ */}
       <section className="w-full bg-white border-y border-[#e1ded8] py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a261c] mb-6 leading-snug">
-              Kenapa Pijak Bumi Learning?
-            </h2>
-            <blockquote className="text-xl md:text-2xl text-[#304110] font-medium leading-relaxed mb-6">
-              &ldquo;Karena belajar tentang bumi seharusnya terasa dekat dengan kehidupan kita.&rdquo;
-            </blockquote>
-            <p className="text-[#5a6b5c] text-lg leading-relaxed">
-              Di PBL, kami percaya perubahan nggak harus dimulai dari hal besar. Kita bisa mulai
-              dari rumah, dari kebiasaan sehari-hari, dari apa yang kita makan, gunakan, buang, dan
-              pelajari.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1a261c] mb-6 leading-snug">
+                Kenapa Pijak Bumi Learning?
+              </h2>
+              <blockquote className="text-xl md:text-2xl text-[#304110] font-medium leading-relaxed mb-6">
+                &ldquo;Karena belajar tentang bumi seharusnya terasa dekat dengan kehidupan
+                kita.&rdquo;
+              </blockquote>
+              <p className="text-[#5a6b5c] text-lg leading-relaxed">
+                Di PBL, kami percaya perubahan nggak harus dimulai dari hal besar. Kita bisa mulai
+                dari rumah, dari kebiasaan sehari-hari, dari apa yang kita makan, gunakan, buang,
+                dan pelajari.
+              </p>
+            </div>
+
+            <div className="relative rounded-3xl overflow-hidden border border-[#e1ded8] aspect-[4/3]">
+              <Image
+                src={FOTO.kenapa}
+                alt={FOTO.kenapaAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -115,30 +152,17 @@ export default function Home() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <KategoriCard
-            ikon={<Recycle className="w-7 h-7 text-[#304110]" />}
-            judul="Gaya Hidup Berkelanjutan"
-            teks="Zero waste, 6R, pengelolaan sampah, eco enzyme"
-            href="/kelas"
-          />
-          <KategoriCard
-            ikon={<Leaf className="w-7 h-7 text-[#304110]" />}
-            judul="Hidup Dekat dengan Alam"
-            teks="Meramban, berkebun, mengenal sumber daya alam"
-            href="/kelas"
-          />
-          <KategoriCard
-            ikon={<Droplets className="w-7 h-7 text-[#304110]" />}
-            judul="Ketahanan & Kesiapsiagaan"
-            teks="Ketahanan air, survival, kesiapsiagaan keluarga"
-            href="/kelas"
-          />
-          <KategoriCard
-            ikon={<HomeIcon className="w-7 h-7 text-[#304110]" />}
-            judul="Keterampilan Rumah Tangga"
-            teks="DIY, natural care, keterampilan praktis"
-            href="/resources"
-          />
+          {KATEGORI.map((k) => (
+            <KategoriCard
+              key={k.id}
+              gambar={k.gambar}
+              gambarAlt={k.gambarAlt}
+              emoji={k.emoji}
+              judul={k.nama}
+              teks={k.deskripsi}
+              href={HREF_KATEGORI[k.id] ?? '/kelas'}
+            />
+          ))}
         </div>
       </section>
 
@@ -154,7 +178,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <ProdukCard
-              ikon={<GraduationCap className="w-8 h-8 text-[#304110]" />}
+              gambar={FOTO.produkKelas}
+              gambarAlt={FOTO.produkKelasAlt}
+              ikon={<GraduationCap className="w-6 h-6 text-[#304110]" />}
               judul="Kelas"
               tagline="Belajar bersama mentor"
               teks="Program dengan proses belajar lebih lengkap: materi, pendampingan, dan latihan."
@@ -164,7 +190,9 @@ export default function Home() {
               sorot
             />
             <ProdukCard
-              ikon={<BookOpen className="w-8 h-8 text-[#304110]" />}
+              gambar={FOTO.produkPanduan}
+              gambarAlt={FOTO.produkPanduanAlt}
+              ikon={<BookOpen className="w-6 h-6 text-[#304110]" />}
               judul="Panduan Digital"
               tagline="Belajar mandiri, tempo sendiri"
               teks="Panduan praktis yang bisa kamu baca ulang kapan saja, sesuai kebutuhanmu."
@@ -173,7 +201,9 @@ export default function Home() {
               cta="Lihat Panduan"
             />
             <ProdukCard
-              ikon={<Wrench className="w-8 h-8 text-[#304110]" />}
+              gambar={FOTO.produkResources}
+              gambarAlt={FOTO.produkResourcesAlt}
+              ikon={<Wrench className="w-6 h-6 text-[#304110]" />}
               judul="Tool & Resource"
               tagline="Alat bantu belajar"
               teks="Worksheet, jurnal, dan checklist supaya kebiasaan baru lebih mudah dijalani."
@@ -209,6 +239,27 @@ export default function Home() {
             </p>
           </div>
 
+          <div className="grid sm:grid-cols-2 gap-6 mb-14">
+            <div className="relative rounded-3xl overflow-hidden border border-[#e1ded8] aspect-[4/3]">
+              <Image
+                src={FOTO.cerita1}
+                alt={FOTO.cerita1Alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 560px"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative rounded-3xl overflow-hidden border border-[#e1ded8] aspect-[4/3]">
+              <Image
+                src={FOTO.cerita2}
+                alt={FOTO.cerita2Alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 560px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
             <StatCard angka="500+" label="Peserta belajar" />
             <StatCard angka="10+" label="Kelas & program" />
@@ -236,12 +287,18 @@ export default function Home() {
 
       {/* ============ 7. TENTANG FOUNDER ============ */}
       <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-[#f9f8f6] border border-[#e1ded8] rounded-3xl p-8 md:p-12">
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="shrink-0 w-24 h-24 rounded-2xl bg-[#e8eed9] border border-[#e1ded8] flex items-center justify-center">
-              <Sprout className="w-10 h-10 text-[#304110]" />
+        <div className="bg-[#f9f8f6] border border-[#e1ded8] rounded-3xl overflow-hidden">
+          <div className="flex flex-col md:flex-row">
+            <div className="relative md:w-2/5 shrink-0 aspect-[4/3] md:aspect-auto md:min-h-[320px]">
+              <Image
+                src={FOTO.founder}
+                alt={FOTO.founderAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 360px"
+                className="object-cover"
+              />
             </div>
-            <div>
+            <div className="p-8 md:p-12">
               <h2 className="text-2xl md:text-3xl font-bold text-[#1a261c] mb-5">
                 Hai, aku Dewi.
               </h2>
@@ -269,37 +326,65 @@ export default function Home() {
 
       {/* ============ 8. COMMUNITY ============ */}
       <section className="w-full bg-[#304110] py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-snug">
-            Belajar sendiri boleh.
-            <br />
-            Bertumbuh bersama lebih menyenangkan.
-          </h2>
-          <p className="text-[#d0dfd3] text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            Ikuti kelas, diskusi, kegiatan, dan ruang belajar Pijak Bumi Learning.
-          </p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] order-2 lg:order-1">
+              <Image
+                src={FOTO.komunitas}
+                alt={FOTO.komunitasAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className="object-cover"
+              />
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/forum"
-              className="bg-white hover:bg-[#e8eed9] text-[#222e0b] px-8 py-4 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
-            >
-              <MessageCircle className="w-5 h-5" /> Gabung Komunitas
-            </Link>
-            <a
-              href="https://www.instagram.com/pijakbumilearning/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-transparent hover:bg-[#3d5218] text-white border border-[#5a7530] px-8 py-4 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
-            >
-              <Instagram className="w-5 h-5" /> Ikuti Instagram
-            </a>
+            <div className="text-white order-1 lg:order-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#3d5218] text-[#c8d6b0] text-sm font-medium mb-6">
+                <Users className="w-4 h-4" />
+                <span>Ruang belajar bersama</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-snug">
+                Belajar sendiri boleh.
+                <br />
+                Bertumbuh bersama lebih menyenangkan.
+              </h2>
+              <p className="text-[#d0dfd3] text-lg mb-10 leading-relaxed">
+                Ikuti kelas, diskusi, kegiatan, dan ruang belajar Pijak Bumi Learning.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/forum"
+                  className="bg-white hover:bg-[#e8eed9] text-[#222e0b] px-7 py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" /> Gabung Komunitas
+                </Link>
+                <a
+                  href="https://www.instagram.com/pijakbumilearning/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent hover:bg-[#3d5218] text-white border border-[#5a7530] px-7 py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <Instagram className="w-5 h-5" /> Ikuti Instagram
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ============ 9. CTA TERAKHIR ============ */}
       <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+        <div className="relative w-full rounded-3xl overflow-hidden border border-[#e1ded8] aspect-[16/9] md:aspect-[21/9] mb-12">
+          <Image
+            src={FOTO.cta}
+            alt={FOTO.ctaAlt}
+            fill
+            sizes="(max-width: 896px) 100vw, 896px"
+            className="object-cover"
+          />
+        </div>
+
         <Footprints className="w-12 h-12 text-[#304110] mx-auto mb-6" />
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a261c] mb-4 leading-snug">
           Yuk, mulai pijakkan langkahmu. 👣
@@ -343,12 +428,16 @@ function PrinsipCard({ ikon, judul, teks }: { ikon: React.ReactNode; judul: stri
 }
 
 function KategoriCard({
-  ikon,
+  gambar,
+  gambarAlt,
+  emoji,
   judul,
   teks,
   href,
 }: {
-  ikon: React.ReactNode;
+  gambar: string;
+  gambarAlt: string;
+  emoji: string;
   judul: string;
   teks: string;
   href: string;
@@ -356,21 +445,35 @@ function KategoriCard({
   return (
     <Link
       href={href}
-      className="bg-white border border-[#e1ded8] rounded-2xl p-7 hover:border-[#304110] hover:shadow-sm transition-all group flex flex-col"
+      className="bg-white border border-[#e1ded8] rounded-2xl overflow-hidden hover:border-[#304110] hover:shadow-md transition-all group flex flex-col"
     >
-      <div className="w-14 h-14 rounded-xl bg-[#e8eed9] flex items-center justify-center mb-5 group-hover:bg-[#304110] transition-colors">
-        <span className="group-hover:[&>svg]:text-white [&>svg]:transition-colors">{ikon}</span>
+      <div className="relative h-44 w-full bg-[#e8eed9]">
+        <Image
+          src={gambar}
+          alt={gambarAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <span className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/90 backdrop-blur flex items-center justify-center text-lg shadow-sm">
+          {emoji}
+        </span>
       </div>
-      <h3 className="text-base font-bold text-[#1a261c] mb-2 leading-snug">{judul}</h3>
-      <p className="text-[#5a6b5c] text-sm leading-relaxed flex-grow">{teks}</p>
-      <span className="inline-flex items-center gap-2 text-[#304110] text-sm font-semibold mt-5 group-hover:gap-3 transition-all">
-        Pelajari <ArrowRight className="w-4 h-4" />
-      </span>
+
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-base font-bold text-[#1a261c] mb-2 leading-snug">{judul}</h3>
+        <p className="text-[#5a6b5c] text-sm leading-relaxed flex-grow">{teks}</p>
+        <span className="inline-flex items-center gap-2 text-[#304110] text-sm font-semibold mt-5 group-hover:gap-3 transition-all">
+          Pelajari <ArrowRight className="w-4 h-4" />
+        </span>
+      </div>
     </Link>
   );
 }
 
 function ProdukCard({
+  gambar,
+  gambarAlt,
   ikon,
   judul,
   tagline,
@@ -380,6 +483,8 @@ function ProdukCard({
   cta,
   sorot = false,
 }: {
+  gambar: string;
+  gambarAlt: string;
   ikon: React.ReactNode;
   judul: string;
   tagline: string;
@@ -391,32 +496,44 @@ function ProdukCard({
 }) {
   return (
     <div
-      className={`rounded-2xl p-8 flex flex-col h-full border transition-colors ${
-        sorot ? 'bg-[#f9f8f6] border-[#304110]' : 'bg-[#f9f8f6] border-[#e1ded8] hover:border-[#304110]'
+      className={`rounded-2xl overflow-hidden flex flex-col h-full border transition-colors bg-[#f9f8f6] ${
+        sorot ? 'border-[#304110]' : 'border-[#e1ded8] hover:border-[#304110]'
       }`}
     >
-      <div className="bg-white w-16 h-16 rounded-xl flex items-center justify-center mb-6 border border-[#e1ded8]">
-        {ikon}
+      <div className="relative h-44 w-full bg-[#e8eed9]">
+        <Image
+          src={gambar}
+          alt={gambarAlt}
+          fill
+          sizes="(max-width: 768px) 100vw, 360px"
+          className="object-cover"
+        />
+        <span className="absolute bottom-3 left-3 w-11 h-11 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center border border-[#e1ded8] shadow-sm">
+          {ikon}
+        </span>
       </div>
-      <h3 className="text-xl font-bold text-[#1a261c] mb-1">{judul}</h3>
-      <p className="text-[#65826c] text-sm font-medium mb-4">{tagline}</p>
-      <p className="text-[#5a6b5c] leading-relaxed text-sm mb-6">{teks}</p>
 
-      <ul className="space-y-2 mb-8">
-        {contoh.map((c) => (
-          <li key={c} className="flex items-start gap-2 text-sm text-[#5a6b5c]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#304110] mt-2 shrink-0" />
-            {c}
-          </li>
-        ))}
-      </ul>
+      <div className="p-7 flex flex-col flex-grow">
+        <h3 className="text-xl font-bold text-[#1a261c] mb-1">{judul}</h3>
+        <p className="text-[#65826c] text-sm font-medium mb-4">{tagline}</p>
+        <p className="text-[#5a6b5c] leading-relaxed text-sm mb-6">{teks}</p>
 
-      <Link
-        href={href}
-        className="mt-auto inline-flex items-center gap-2 text-[#304110] font-semibold hover:gap-3 transition-all"
-      >
-        {cta} <ArrowRight className="w-4 h-4" />
-      </Link>
+        <ul className="space-y-2 mb-8">
+          {contoh.map((c) => (
+            <li key={c} className="flex items-start gap-2 text-sm text-[#5a6b5c]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#304110] mt-2 shrink-0" />
+              {c}
+            </li>
+          ))}
+        </ul>
+
+        <Link
+          href={href}
+          className="mt-auto inline-flex items-center gap-2 text-[#304110] font-semibold hover:gap-3 transition-all"
+        >
+          {cta} <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
     </div>
   );
 }

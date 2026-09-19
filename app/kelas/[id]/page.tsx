@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, CheckCircle, Users, Monitor } from 'lucide-react';
 import { KELAS, KATEGORI } from '@/lib/konten';
@@ -51,6 +52,16 @@ export default async function KelasDetail({ params }: { params: Promise<{ id: st
         </div>
 
         <h1 className="text-3xl md:text-4xl font-bold text-[#1a261c] mb-6">{kelas.judul}</h1>
+
+        <div className="relative w-full rounded-2xl overflow-hidden aspect-[16/9] mb-8 bg-[#e8eed9]">
+          <Image
+            src={kelas.gambar}
+            alt={kelas.gambarAlt}
+            fill
+            sizes="(max-width: 896px) 100vw, 896px"
+            className="object-cover"
+          />
+        </div>
 
         <p className="text-lg text-[#5a6b5c] leading-relaxed mb-10">{kelas.ringkas}</p>
 

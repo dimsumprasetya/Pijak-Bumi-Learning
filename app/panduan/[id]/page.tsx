@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Download, FileText } from 'lucide-react';
 import { PANDUAN, KATEGORI } from '@/lib/konten';
@@ -45,7 +46,18 @@ export default async function PanduanDetail({ params }: { params: Promise<{ id: 
           </span>
         )}
 
-        <h1 className="text-3xl md:text-4xl font-bold text-[#1a261c] mb-4">{panduan.judul}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-[#1a261c] mb-6">{panduan.judul}</h1>
+
+        <div className="relative w-full rounded-2xl overflow-hidden aspect-[16/9] mb-8 bg-[#e8eed9]">
+          <Image
+            src={panduan.gambar}
+            alt={panduan.gambarAlt}
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
+        </div>
+
         <p className="text-lg text-[#5a6b5c] leading-relaxed mb-6">{panduan.ringkas}</p>
         <p className="text-sm text-[#9ca3af] mb-10">{panduan.halaman}</p>
 
