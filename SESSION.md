@@ -60,7 +60,21 @@ Sumber brief: https://chatgpt.com/share/6aae2f64-0fbc-83ec-bcf4-a3480842d3db
 - `/resources` belum bisa diunduh (masih "segera tersedia")
 - Link YouTube @pijakbumilearning perlu diverifikasi (ditebak)
 - Belum ada auth, database, atau CMS — konten masih hardcoded di lib/konten.ts
-- Belum di-push ke GitHub
+- Sudah di-push ke GitHub: commit 31e501c di `main`, dan Vercel auto-deploy —
+  live site sudah memuat versi baru (dicek 2026-09-19).
+
+## Kredensial / akses
+- gh 2.52.0 di C:\Users\dimsu\bin\gh.exe, sudah login sebagai `dimsumprasetya`
+  (auth lewat device flow OAuth, scope: repo, read:org, gist)
+- git global identity: dimsumprasetya / dimsumprasetya@users.noreply.github.com
+
+## Cara push lagi kalau perlu
+```
+export PATH="$HOME/bin:$PATH"     # gh
+cd C:/Users/dimsu/projects/Pijak-Bumi-Learning
+git add -A && git commit -m "..."
+git push origin main
+```
 
 ## Dependencies
 - @google/genai (Gemini API) — belum terpakai
