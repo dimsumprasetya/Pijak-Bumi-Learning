@@ -60,10 +60,12 @@ export default function Navbar() {
           </div>
 
           <button
+            type="button"
             onClick={() => setTerbuka(!terbuka)}
-            className="md:hidden p-2 rounded-lg text-[#2c3e2e] hover:bg-[#f1efe9] transition-colors"
-            aria-label="Buka menu"
+            className="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-[#2c3e2e] hover:bg-[#f1efe9] active:bg-[#e1ded8] transition-colors"
+            aria-label={terbuka ? 'Tutup menu' : 'Buka menu'}
             aria-expanded={terbuka}
+            aria-controls="menu-mobile"
           >
             {terbuka ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -71,7 +73,7 @@ export default function Navbar() {
       </div>
 
       {terbuka && (
-        <div className="md:hidden border-t border-[#e1ded8] bg-white">
+        <div id="menu-mobile" className="md:hidden border-t border-[#e1ded8] bg-white">
           <div className="px-4 py-4 space-y-1">
             {NAV.map(({ href, icon: Ikon, text }) => (
               <Link
