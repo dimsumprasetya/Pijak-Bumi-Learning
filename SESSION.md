@@ -91,6 +91,16 @@ halus. Karena itu: navbar pakai h-12 (48px, "pijak bumi." tajam), footer pakai
 h-20 (80px, seluruh logo terbaca). Kalau nanti mau "learning" terbaca di navbar,
 perlu varian logo horizontal — jangan potong/mengubah logo tanpa izin user.
 
+## Integrasi Lynk.id
+Katalog produk/program ASLI di-scrape dari `https://lynk.id/pijakbumiid` (tanpa API
+publik, HTML server-rendered) → `lib/lynkid-data.json` → halaman `/toko`.
+
+- `scripts/sync-lynkid.mjs` (scrape+parse, tulis data kalau berubah)
+- `scripts/sync-lynkid-and-push.sh` (wrapper cron: commit+push saat berubah)
+- `lib/lynkid.ts` + `app/toko/page.tsx`
+- Cron `370d524275a0` every 3h, no_agent, Telegram 7271250872.
+- 8 produk + 5 program saat ini. Link checkout tetap mengarah ke lynk.id.
+
 ## TODO / belum
 - Angka social proof masih placeholder (500+, 10+, 2023) — perlu data aktual
 - Testimonial masih contoh, belum testimonial asli
