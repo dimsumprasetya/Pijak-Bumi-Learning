@@ -76,6 +76,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                   </li>
                   <li>
+                    <Link href="/toko" className="text-[#5a6b5c] hover:text-[#304110] transition-colors">
+                      Toko &amp; Program
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/kuis" className="text-[#5a6b5c] hover:text-[#304110] transition-colors">
                       Kuis
                     </Link>

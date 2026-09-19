@@ -218,6 +218,15 @@ export default function Home() {
             perlu lihat detail dulu, dan ada yang dibeli. Kami nggak mau semuanya terasa seperti
             jualan.
           </p>
+
+          <div className="text-center mt-8">
+            <Link
+              href="/toko"
+              className="inline-flex items-center gap-2 bg-[#304110] hover:bg-[#222e0b] text-white px-7 py-3.5 rounded-full font-medium transition-colors"
+            >
+              Lihat katalog lengkap &amp; harga di Toko <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

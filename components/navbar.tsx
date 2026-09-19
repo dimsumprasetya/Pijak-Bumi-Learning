@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GraduationCap, BookOpen, Wrench, MessageCircle, Menu, X } from 'lucide-react';
+import { GraduationCap, BookOpen, Wrench, MessageCircle, ShoppingBag, Menu, X } from 'lucide-react';
 
 const NAV = [
   { href: '/kelas', icon: GraduationCap, text: 'Kelas' },
   { href: '/panduan', icon: BookOpen, text: 'Panduan' },
   { href: '/resources', icon: Wrench, text: 'Resources' },
+  { href: '/toko', icon: ShoppingBag, text: 'Toko' },
   { href: '/forum', icon: MessageCircle, text: 'Komunitas' },
 ];
 
