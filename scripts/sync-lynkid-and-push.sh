@@ -9,8 +9,18 @@ export PATH="$HOME/bin:$PATH"
 cd "C:/Users/dimsu/projects/Pijak-Bumi-Learning" || exit 1
 
 OUT="$(node scripts/sync-lynkid.mjs 2>&1)"
+RC=$?
 
-if ! echo "$OUT" | grep -q "CHANGED"; then
+if [ $RC -ne 0 ]; then
+  # sinkron gagal (mis. diblokir lynk.id) -> laporkan, jangan diam-diam
+  echo "⚠️ Sinkron Lynk.id GAGAL:"
+  echo "$OUT"
+  exit 1
+fi
+
+# baris terakhir = "CHANGED" atau "UNCHANGED" (tepat, bukan substring)
+LAST="$(printf '%s' "$OUT" | tail -1)"
+if [ "$LAST" != "CHANGED" ]; then
   # tidak ada perubahan konten -> diam total (stdout kosong = tidak kirim apa-apa)
   exit 0
 fi
