@@ -31,11 +31,51 @@ const HEADERS = [
   '-H', 'Accept-Language: id-ID,id;q=0.9,en;q=0.8',
 ];
 
+// Sleep sinkron (tanpa dependensi) untuk backoff antar percobaan.
+function sleepSync(ms) {
+  try {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+  } catch {
+    /* kalau tidak didukung, lanjut tanpa jeda */
+  }
+}
+
+// Fetch gagal sesekali (timeout/DNS/intermiten) — jangan langsung menyerah.
+// curl punya retry internal + loop retry di sini sebagai backstop.
 function fetchHtml(url) {
-  return execFileSync('curl', ['-s', '-L', '--max-time', '30', ...HEADERS, url], {
-    encoding: 'utf8',
-    maxBuffer: 5 * 1024 * 1024,
-  });
+  const ATTEMPTS = 3;
+  let lastErr;
+  for (let i = 1; i <= ATTEMPTS; i++) {
+    try {
+      return execFileSync(
+        'curl',
+        [
+          '-sS',
+          '-L',
+          '--max-time',
+          '45',
+          '--retry',
+          '3',
+          '--retry-delay',
+          '2',
+          '--retry-connrefused',
+          '--retry-all-errors',
+          ...HEADERS,
+          url,
+        ],
+        { encoding: 'utf8', maxBuffer: 5 * 1024 * 1024 }
+      );
+    } catch (e) {
+      lastErr = e;
+      const code = e.status ?? 'n/a';
+      const detail = String(e.stderr || '').trim().split('\n').filter(Boolean).pop() || e.message;
+      if (i < ATTEMPTS) {
+        console.error(`⚠️ Percobaan ${i}/${ATTEMPTS} gagal (exit ${code}): ${detail} — coba lagi...`);
+        sleepSync(i * 3000);
+      }
+    }
+  }
+  throw lastErr;
 }
 
 function stripTags(s) {
@@ -60,7 +100,9 @@ function main() {
   try {
     html = fetchHtml(URL_PROFIL);
   } catch (e) {
-    console.error('GAGAL fetch lynk.id (curl):', e.message);
+    const code = e.status ?? 'n/a';
+    const detail = String(e.stderr || '').trim().split('\n').filter(Boolean).pop() || e.message;
+    console.error(`GAGAL fetch lynk.id setelah ${3} percobaan (curl exit ${code}): ${detail}`);
     process.exit(1);
   }
   if (!html || html.length < 2000) {
